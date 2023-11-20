@@ -11,3 +11,17 @@ spec:
   - protocol: TCP
     port: 8666
     targetPort: 8080
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: the-service-nodeport
+  namespace: default
+spec:
+  selector:
+    deployment: hello
+  type: NodePort
+  ports:
+  - protocol: TCP
+    targetPort: 8080
